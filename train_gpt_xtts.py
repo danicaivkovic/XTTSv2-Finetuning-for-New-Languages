@@ -43,6 +43,8 @@ def create_xtts_trainer_parser():
 
 
 def train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_audio_length, max_text_length, lr, weight_decay, save_step):
+    print("USAO U TRAIN_GPT")
+    
     #  Logging parameters
     RUN_NAME = "GPT_XTTS_FT"
     PROJECT_NAME = "XTTS_trainer"
@@ -63,6 +65,7 @@ def train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_au
     # Define here the dataset that you want to use for the fine-tuning on.
     DATASETS_CONFIG_LIST = []
     for metadata in metadatas:
+        print("USAO U FOR")
         train_csv, eval_csv, language = metadata.split(",")
         print(train_csv, eval_csv, language)
 
@@ -220,6 +223,8 @@ def train_gpt(metadatas, num_epochs, batch_size, grad_acumm, output_path, max_au
 if __name__ == "__main__":
     parser = create_xtts_trainer_parser()
     args = parser.parse_args()
+    
+    print("PRE POZIVA TRAIN_GPT")
 
     trainer_out_path = train_gpt(
         metadatas=args.metadatas,
